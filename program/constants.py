@@ -5,8 +5,6 @@ from decouple import config # allow access to env vars
 #!!! SELECT MODE !!!!!
 MODE = "DEVELOPMENT"
 
-API_HOST_SEPOLIA = "https://api.stage.dydx.exchange"
-
 # Close all open positions and orders
 ABORT_ALL_POSITIONS = True
 
