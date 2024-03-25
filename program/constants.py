@@ -6,10 +6,10 @@ from decouple import config # allow access to env vars
 MODE = "DEVELOPMENT"
 
 # Close all open positions and orders
-ABORT_ALL_POSITIONS = True
+ABORT_ALL_POSITIONS = False
 
 # Find Cointegrated Pairs
-FIND_COINTEGRATED_PAIRS = True
+FIND_COINTEGRATED = True
 
 # Place Trades
 PLACE_TRADES = True
