@@ -1,9 +1,11 @@
-from dydx3.constants import API_HOST_SEPOLIA, API_HOST_MAINNET
+from dydx3.constants import API_HOST_MAINNET, API_HOST_SEPOLIA
 from web3 import Web3
 from decouple import config # allow access to env vars
 
 #!!! SELECT MODE !!!!!
 MODE = "DEVELOPMENT"
+
+API_HOST_SEPOLIA = "https://api.stage.dydx.exchange"
 
 # Close all open positions and orders
 ABORT_ALL_POSITIONS = True
@@ -59,3 +61,5 @@ HOST = API_HOST_MAINNET if MODE == "PRODUCTION" else API_HOST_SEPOLIA
 HTTP_PROVIDER_MAINNET = "https://eth-mainnet.g.alchemy.com/v2/s57XDeF1IRY34W8TKS1sSvtL9Dojsg60"
 HTTP_PROVIDER_TESTNET = "https://eth-sepolia.g.alchemy.com/v2/k-QfJ1gbTOoMPJU2ofSxHN2-TLrXxwvl"
 HTTP_PROVIDER = HTTP_PROVIDER_MAINNET if MODE == "PRODUCTION" else HTTP_PROVIDER_TESTNET
+
+TOKEN_FACTOR_10 = ["XLM-USD","DOGE-USD","TRON-USD"]
