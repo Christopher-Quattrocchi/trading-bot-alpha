@@ -4,6 +4,29 @@ from pprint import pprint
 from web3 import Web3
 from func_utils import format_number
 
+# get existing open positions
+def is_open_positions(client, market):
+  
+  #protect api
+  time.sleep(0.2)
+  
+  #Get positions
+  all_positions = client.private.get_positions(
+    market=market,
+    status="OPEN"
+  )
+  
+  # determine if open
+  if len(all_positions.data["positions"]) > 0:
+    return True
+  else:
+    return False
+
+
+#check order status
+def check_order_status(client, order_id):
+  order = client.private.get_order_by_id(order_id)
+  return order.data["order"]["status"]
 
 # Place market order
 def place_market_order(client, market, side, size, price, reduce_only):

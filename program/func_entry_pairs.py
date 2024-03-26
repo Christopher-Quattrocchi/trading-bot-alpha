@@ -1,9 +1,9 @@
 from constants import ZSCORE_THRESH, USD_PER_TRADE, USD_MIN_COLLATERAL, TOKEN_FACTOR_10
 from func_utils import format_number
-#from func_public import get_candles_recent
-#from func_cointegration import calculate_zscore
-#from func_private import is_open_positions
-#from func_bot_agent import BotAgent
+from func_public import get_candles_recent
+from func_cointegration import calculate_zscore
+from func_private import is_open_positions
+from func_bot_agent import BotAgent
 import pandas as pd
 import json
 
@@ -68,7 +68,7 @@ def open_positions(client):
           base_side = "BUY" if z_score < 0 else "SELL"
           quote_side = "BUY" if z_score > 0 else "SELL"
 
-          # Get acceptable price in string format with correct number of decimals
+          # Get acceptable price in string format with correct number of decimals // Maybe upgrade this later
           base_price = series_1[-1]
           quote_price = series_2[-1]
           accept_base_price = float(base_price) * 1.01 if z_score < 0 else float(base_price) * 0.99
@@ -101,7 +101,7 @@ def open_positions(client):
           base_size = format_number(base_quantity, base_step_size)
           quote_size = format_number(quote_quantity, quote_step_size)
 
-          # Ensure size
+          # Ensure size. Need to MAKE SURE ALSO IN MAX ORDER SIZE. WHEN TRADING MORE THIS MATTERS
           base_min_order_size = markets["markets"][base_market]["minOrderSize"]
           quote_min_order_size = markets["markets"][quote_market]["minOrderSize"]
           check_base = float(base_quantity) > float(base_min_order_size)
