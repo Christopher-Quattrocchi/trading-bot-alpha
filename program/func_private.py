@@ -3,6 +3,7 @@ import time
 from pprint import pprint
 from web3 import Web3
 from func_utils import format_number
+import json
 
 # get existing open positions
 def is_open_positions(client, market):
@@ -120,6 +121,11 @@ def abort_all_positions(client):
       
       # protect API
       time.sleep(0.2)
+      
+    # Override json file with empty list
+    bot_agents = []
+    with open("bot_agents.json", "w") as f:
+      json.dump(bot_agents, f)
       
     #Return closed orders
     return close_order
