@@ -30,7 +30,7 @@ if __name__ == "__main__":
     
     # Construct market prices
     try:
-      print("Fetching market prices, please wait...")
+      print("Fetching market prices, please wait up to 3 minutes...")
       df_market_prices = construct_market_prices(client)
     except Exception as e:
       print("Error constructing market prices: ", e)
@@ -47,22 +47,23 @@ if __name__ == "__main__":
       print("Error saving cointegrated pairs: ", e)
       exit(1)
       
+  # run as always on    
+  while True:   
+    
+      ################
+    if MANAGE_EXITS:
+      try:
+        print("Managing exits...")
+        manage_trade_exits(client)
+      except Exception as e:
+        print("Error managing exiting positions: ", e)
+        exit(1) 
       
-    
-    ################
-  if MANAGE_EXITS:
-    try:
-      print("Managing exits...")
-      manage_trade_exits(client)
-    except Exception as e:
-      print("Error managing exiting positions: ", e)
-      exit(1) 
-    
-    # Place trades for opening positions
-  if PLACE_TRADES:
-    try:
-      print("Finding trading opportunities...")
-      open_positions(client)
-    except Exception as e:
-      print("Error trading pairs: ", e)
-      exit(1)
+      # Place trades for opening positions
+    if PLACE_TRADES:
+      try:
+        print("Finding trading opportunities...")
+        open_positions(client)
+      except Exception as e:
+        print("Error trading pairs: ", e)
+        exit(1)

@@ -56,7 +56,7 @@ def place_market_order(client, market, side, size, price, reduce_only):
 )
   
 # Return result
-  return placed_order.data
+  #return placed_order.data
 
 
 # Abort all open positions
