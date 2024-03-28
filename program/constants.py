@@ -6,7 +6,7 @@ from decouple import config # allow access to env vars
 MODE = "DEVELOPMENT"
 
 # Close all open positions and orders
-ABORT_ALL_POSITIONS = False
+ABORT_ALL_POSITIONS = True
 
 # Find Cointegrated Pairs
 FIND_COINTEGRATED = True
@@ -64,3 +64,4 @@ HTTP_PROVIDER_TESTNET = "https://eth-sepolia.g.alchemy.com/v2/k-QfJ1gbTOoMPJU2of
 HTTP_PROVIDER = HTTP_PROVIDER_MAINNET if MODE == "PRODUCTION" else HTTP_PROVIDER_TESTNET
 
 TOKEN_FACTOR_10 = ["XLM-USD","DOGE-USD","TRON-USD"]
+
